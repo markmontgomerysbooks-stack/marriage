@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sex Your Marriage Truly Wants</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&family=Cormorant:ital@1&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root {
+  --ink:       #0D0608;
+  --burgundy:  #5C1A28;
+  --wine:      #7A2338;
+  --rose:      #9B3A52;
+  --blush:     #C4786A;
+  --gold:      #C9A45A;
+  --gold-pale: #E8D5A3;
+  --cream:     #FAF6F0;
+  --parchment: #F0E8DC;
+  --smoke:     #E0D4C8;
+  --mist:      #2A1520;
+  --deep:      #150B10;
+  --mid:       #6B4A55;
+  --white:     #FFFFFF;
+  --shadow:    rgba(13,6,8,0.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* ── AGE GATE ── */
+#age-gate{position:fixed;inset:0;z-index:9999;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:2rem}
+#age-gate.gone{display:none}
+.gate-box{max-width:460px;width:100%;text-align:center}
+.gate-mark{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.85rem;letter-spacing:0.18em;color:var(--mid);text-transform:uppercase;margin-bottom:2.5rem;opacity:0.6}
+.gate-divider{width:40px;height:1px;background:var(--smoke);margin:0 auto 2.5rem}
+.gate-box h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3rem);font-weight:300;color:var(--ink);line-height:1.1;margin-bottom:1.2rem}
+.gate-box h1 em{font-style:italic;color:var(--wine)}
+.gate-box p{font-size:0.88rem;color:#6B5060;line-height:1.75;margin-bottom:0.6rem;max-width:340px;margin-left:auto;margin-right:auto}
+.gate-warning{font-size:0.78rem;color:var(--wine);margin-bottom:2.2rem;font-style:italic}
+.gate-btns{display:flex;flex-direction:column;gap:0.75rem;align-items:center}
+.gate-yes{background:var(--ink);color:var(--cream);border:none;padding:0.95rem 2.8rem;font-family:'Inter',sans-serif;font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;border-radius:1px;transition:background 0.2s;width:100%;max-width:300px}
+.gate-yes:hover{background:var(--burgundy)}
+.gate-no{font-size:0.72rem;color:var(--mid);text-decoration:none;opacity:0.5;letter-spacing:0.08em}
+.gate-no:hover{opacity:0.8}
+.gate-legal{font-size:0.68rem;color:#aaa;margin-top:2rem;line-height:1.6}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:rgba(13,6,8,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,164,90,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:64px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--gold);letter-spacing:0.02em;max-width:240px;line-height:1.2}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,246,240,0.5);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{color:var(--gold)!important;border:1px solid rgba(201,164,90,0.4);padding:0.4rem 1.1rem;border-radius:1px}
+.nav-cta:hover{background:rgba(201,164,90,0.1)!important;border-color:var(--gold)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:1px;background:var(--cream);display:block;transition:all .3s}
+@media(max-width:700px){
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(13,6,8,0.98);flex-direction:column;padding:2rem;gap:1.4rem;border-bottom:1px solid rgba(201,164,90,0.15);z-index:199}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+}
+
+/* ── HERO ── */
+.hero{min-height:96vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:7rem 2rem 5rem;position:relative;overflow:hidden;background:var(--ink)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 35%,rgba(92,26,40,0.5) 0%,transparent 70%),radial-gradient(ellipse 40% 35% at 75% 75%,rgba(201,164,90,0.1) 0%,transparent 60%);pointer-events:none}
+.hero-eyebrow{font-size:0.65rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;opacity:.75}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,9vw,6.5rem);font-weight:300;line-height:1.0;color:var(--cream);max-width:860px;margin-bottom:1.8rem;letter-spacing:-0.01em}
+.hero h1 em{font-style:italic;color:var(--blush)}
+.hero-sub{font-size:0.97rem;max-width:500px;color:rgba(250,246,240,0.5);margin-bottom:3rem;line-height:1.9;font-weight:300}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-block;font-family:'Inter',sans-serif;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;padding:0.9rem 2.2rem;border-radius:1px;cursor:pointer;transition:all .25s;border:none}
+.btn-wine{background:var(--wine);color:var(--cream)}
+.btn-wine:hover{background:var(--burgundy);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--cream);border:1px solid rgba(250,246,240,0.25)}
+.btn-outline:hover{background:rgba(250,246,240,0.06);border-color:rgba(250,246,240,0.5)}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:#b8944a;transform:translateY(-1px)}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(250,246,240,0.2);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(250,246,240,0.2))}
+
+/* ── HERO BYLINE ── */
+.hero-byline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--gold);opacity:.7;letter-spacing:0.08em;margin-bottom:1.6rem;margin-top:-0.8rem}
+
+/* ── STUDIO PANEL ── */
+.studio-fab{position:fixed;bottom:5rem;left:1.5rem;z-index:300;background:var(--burgundy);color:var(--gold);border:1px solid rgba(201,164,90,0.3);border-radius:0;padding:.55rem 1.2rem;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;transition:all .25s;box-shadow:0 4px 24px rgba(0,0,0,0.4)}
+.studio-fab:hover{background:var(--wine);border-color:var(--gold)}
+
+.studio-overlay{display:none;position:fixed;inset:0;z-index:590;background:rgba(13,6,8,0.7);backdrop-filter:blur(3px)}
+.studio-overlay.open{display:block}
+
+.studio-panel{position:fixed;top:0;left:-520px;width:100%;max-width:520px;height:100vh;z-index:700;background:var(--deep);border-right:1px solid rgba(201,164,90,0.15);display:flex;flex-direction:column;transition:left .35s cubic-bezier(.4,0,.2,1);box-shadow:8px 0 40px rgba(0,0,0,0.5)}
+.studio-panel.open{left:0}
+
+.studio-head{padding:1.6rem 2rem;border-bottom:1px solid rgba(201,164,90,0.1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:var(--ink)}
+.studio-head h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--cream)}
+.studio-head p{font-size:0.72rem;color:rgba(250,246,240,0.35);margin-top:0.15rem}
+.studio-close{background:none;border:none;color:rgba(250,246,240,0.3);font-size:1.6rem;cursor:pointer;line-height:1;transition:color .2s}
+.studio-close:hover{color:var(--cream)}
+
+.studio-tabs{display:flex;border-bottom:1px solid rgba(201,164,90,0.1);flex-shrink:0}
+.studio-tab{flex:1;padding:.8rem;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:none;background:transparent;color:rgba(250,246,240,0.35);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;font-family:'Inter',sans-serif}
+.studio-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+.studio-body{flex:1;overflow-y:auto;padding:1.8rem 2rem}
+
+.studio-field{display:flex;flex-direction:column;gap:.3rem;margin-bottom:1rem}
+.studio-field label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:.6}
+.studio-field input,.studio-field textarea,.studio-field select{border:1px solid rgba(201,164,90,0.2);border-radius:1px;padding:.6rem .85rem;font-family:'Inter',sans-serif;font-size:.86rem;background:rgba(13,6,8,0.5);color:var(--cream);outline:none;transition:border-color .2s;width:100%}
+.studio-field input:focus,.studio-field textarea:focus,.studio-field select:focus{border-color:var(--gold)}
+.studio-field select option{background:var(--ink)}
+.studio-field textarea{min-height:160px;resize:vertical}
+
+.studio-upload-zone{border:1px dashed rgba(201,164,90,0.3);border-radius:1px;padding:2.5rem 1.5rem;text-align:center;cursor:pointer;transition:all .25s;background:rgba(13,6,8,0.3);margin-bottom:1.2rem}
+.studio-upload-zone:hover{border-color:var(--gold);background:rgba(201,164,90,0.04)}
+.studio-upload-icon{font-size:2rem;margin-bottom:.6rem}
+.studio-upload-zone p{font-size:.82rem;color:rgba(250,246,240,0.4);line-height:1.6}
+.studio-upload-zone strong{color:var(--gold)}
+
+.studio-footer{padding:1.2rem 2rem;border-top:1px solid rgba(201,164,90,0.1);flex-shrink:0;display:flex;gap:.75rem;align-items:center}
+
+.studio-pane{display:none}
+.studio-pane.active{display:block}
+
+.studio-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:1rem}
+.studio-thumb{position:relative;aspect-ratio:1;overflow:hidden;background:var(--mist);cursor:pointer}
+.studio-thumb img,.studio-thumb video{width:100%;height:100%;object-fit:cover;display:block}
+.studio-thumb .s-del{position:absolute;top:4px;right:4px;background:rgba(92,26,40,.9);color:white;border:none;width:22px;height:22px;font-size:.6rem;cursor:pointer;opacity:0;transition:opacity .2s;display:flex;align-items:center;justify-content:center}
+.studio-thumb:hover .s-del{opacity:1}
+.studio-art-item{border-left:2px solid rgba(201,164,90,0.2);padding:.7rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:border-color .2s}
+.studio-art-item:hover{border-left-color:var(--gold)}
+.studio-art-item h5{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;color:var(--cream);margin-bottom:.2rem}
+.studio-art-item p{font-size:.72rem;color:rgba(250,246,240,0.35)}
+
+
+/* ── SECTIONS ── */
+section{padding:6rem 5vw}
+.section-eyebrow{font-size:0.64rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;opacity:.8}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.1;color:var(--cream);margin-bottom:1rem;letter-spacing:-0.01em}
+.section-title em{font-style:italic;color:var(--blush)}
+.section-desc{font-size:0.88rem;opacity:0.5;max-width:500px;margin-bottom:2.8rem;line-height:1.8}
+.divider{border:none;border-top:1px solid rgba(201,164,90,0.1);margin:0}
+
+/* ── ABOUT ── */
+#about{background:var(--ink)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;margin-top:3.5rem;border:1px solid rgba(201,164,90,0.1)}
+.pillar{background:var(--ink);border:none;padding:2rem 1.6rem;transition:background .3s}
+.pillar:hover{background:rgba(92,26,40,0.2)}
+.pillar-icon{font-size:1.4rem;margin-bottom:1rem}
+.pillar-label{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;opacity:.7}
+.pillar p{font-size:0.83rem;color:rgba(250,246,240,0.45);line-height:1.75}
+
+/* ── DISCLAIMER ── */
+#disclaimer{background:var(--mist);padding:5rem 5vw}
+.disclaimer-box{max-width:700px;margin:0 auto}
+.disclaimer-box h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--cream);margin-bottom:1.2rem;line-height:1.15}
+.disclaimer-box p{font-size:0.9rem;line-height:1.85;color:rgba(250,246,240,0.5);margin-bottom:0.9rem}
+.disclaimer-highlight{color:var(--gold-pale)!important;opacity:1!important}
+.disclaimer-box .founder{font-size:0.76rem;color:rgba(250,246,240,0.3);font-style:italic;margin-top:1.6rem}
+
+/* ── AI SPACES ── */
+#ai{background:var(--deep)}
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;border:1px solid rgba(201,164,90,0.1)}
+.ai-card{background:var(--deep);padding:2.2rem;cursor:pointer;transition:background .3s;position:relative}
+.ai-card:hover{background:rgba(92,26,40,0.15)}
+.ai-card-icon{font-size:1.6rem;margin-bottom:1.2rem}
+.ai-card-label{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;opacity:.65}
+.ai-card h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--cream);margin-bottom:0.6rem}
+.ai-card p{font-size:0.83rem;color:rgba(250,246,240,0.45);line-height:1.72;margin-bottom:1.4rem}
+.ai-card .launch-btn{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(201,164,90,0.3);padding-bottom:2px;display:inline-block;transition:border-color .2s}
+.ai-card:hover .launch-btn{border-color:var(--gold)}
+
+.create-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin-top:2rem}
+.create-card{background:rgba(250,246,240,0.03);border:1px solid rgba(201,164,90,0.1);border-radius:2px;padding:1.4rem;text-align:center;text-decoration:none;transition:all .25s;display:block}
+.create-card:hover{border-color:rgba(201,164,90,0.35);background:rgba(201,164,90,0.05)}
+.create-card-icon{font-size:1.4rem;margin-bottom:0.6rem}
+.create-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--cream);margin-bottom:0.3rem}
+.create-card p{font-size:0.77rem;color:rgba(250,246,240,0.38);line-height:1.55}
+.create-card .visit{font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-top:0.7rem;display:block;opacity:.7}
+
+/* ── AI MODAL ── */
+.modal-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(13,6,8,0.9);align-items:center;justify-content:center;padding:1rem}
+.modal-bg.open{display:flex}
+.modal{background:var(--mist);border:1px solid rgba(201,164,90,0.15);border-radius:2px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;position:relative}
+.modal-head{background:var(--ink);padding:2rem;border-bottom:1px solid rgba(201,164,90,0.1)}
+.modal-head h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--cream);margin-bottom:0.3rem}
+.modal-head p{font-size:0.82rem;color:rgba(250,246,240,0.4)}
+.modal-close{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;color:rgba(250,246,240,0.3);font-size:1.6rem;cursor:pointer;line-height:1;transition:color .2s}
+.modal-close:hover{color:var(--cream)}
+.modal-body{padding:2rem}
+.ai-form{display:flex;flex-direction:column;gap:1rem}
+.ai-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:.3rem;display:block}
+.ai-input,.ai-select,.ai-textarea{width:100%;border:1px solid rgba(201,164,90,0.2);border-radius:1px;padding:.65rem .9rem;font-family:'Inter',sans-serif;font-size:.86rem;background:rgba(13,6,8,0.4);color:var(--cream);outline:none;transition:border-color .2s}
+.ai-input:focus,.ai-select:focus,.ai-textarea:focus{border-color:var(--gold)}
+.ai-select option{background:var(--ink);color:var(--cream)}
+.ai-textarea{min-height:90px;resize:vertical}
+.ai-result{background:var(--ink);color:var(--cream);border:1px solid rgba(201,164,90,0.15);border-radius:2px;padding:1.6rem;font-size:.88rem;line-height:1.85;margin-top:1rem;min-height:60px;white-space:pre-wrap;display:none}
+.ai-result.show{display:block}
+.generating{opacity:.45;font-style:italic;font-size:.84rem}
+
+/* ── GALLERY (CLOUDINARY) ── */
+#gallery{background:var(--mist)}
+.gallery-header-row{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.media-tabs{display:flex;gap:0;border-bottom:1px solid rgba(201,164,90,0.15)}
+.media-tab{padding:.5rem 1.2rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:none;background:transparent;color:rgba(250,246,240,0.35);border-bottom:1px solid transparent;margin-bottom:-1px;transition:all .2s;font-family:'Inter',sans-serif}
+.media-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:3px;min-height:100px;margin-top:1.5rem}
+.media-card{position:relative;overflow:hidden;background:var(--ink);aspect-ratio:1;cursor:pointer}
+.media-card img,.media-card video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.media-card:hover img,.media-card:hover video{transform:scale(1.05)}
+.media-card .del-btn{position:absolute;top:8px;right:8px;background:rgba(92,26,40,.9);color:white;border:none;border-radius:0;width:28px;height:28px;font-size:.65rem;cursor:pointer;opacity:0;transition:opacity .2s;display:flex;align-items:center;justify-content:center}
+.media-card:hover .del-btn{opacity:1}
+.vid-badge{position:absolute;bottom:8px;left:8px;background:rgba(13,6,8,.75);color:var(--gold);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px}
+.empty-state{grid-column:1/-1;text-align:center;padding:4rem;opacity:.25;font-size:.85rem;font-style:italic}
+.upload-cta{background:transparent;border:1px solid rgba(201,164,90,0.3);color:var(--gold);padding:0.45rem 1.2rem;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;border-radius:1px}
+.upload-cta:hover{background:rgba(201,164,90,0.08);border-color:var(--gold)}
+
+/* Cloudinary upload widget override */
+.cloudinary-upload{display:inline-block}
+
+/* ── LIGHTBOX ── */
+.lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(13,6,8,.96);align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lb-inner{position:relative;max-width:92vw;max-height:92vh;display:flex;align-items:center;justify-content:center}
+.lb-inner img,.lb-inner video{max-width:90vw;max-height:88vh;border-radius:1px;object-fit:contain}
+.lb-close{position:absolute;top:-42px;right:0;background:none;border:none;color:rgba(250,246,240,0.4);font-size:2rem;cursor:pointer;line-height:1;transition:color .2s}
+.lb-close:hover{color:var(--cream)}
+
+/* ── ARTICLES ── */
+#articles{background:var(--deep)}
+.article-form-wrap{background:var(--mist);border:1px solid rgba(201,164,90,0.12);border-radius:1px;padding:2rem;margin-bottom:2.5rem}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--gold);margin-bottom:1.3rem}
+.field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.9rem}
+.field label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);opacity:.6}
+.field input,.field textarea,.field select{border:1px solid rgba(201,164,90,0.2);border-radius:1px;padding:.65rem .9rem;font-family:'Inter',sans-serif;font-size:.86rem;background:rgba(13,6,8,0.5);color:var(--cream);outline:none;transition:border-color .2s;width:100%}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}
+.field select option{background:var(--ink)}
+.field textarea{min-height:140px;resize:vertical}
+.row{display:flex;gap:1rem;flex-wrap:wrap}
+.row .field{flex:1;min-width:180px}
+.form-actions{display:flex;gap:.75rem;align-items:center;margin-top:.5rem;flex-wrap:wrap}
+.btn-sm{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.45rem 1.1rem;border-radius:1px;cursor:pointer;font-family:'Inter',sans-serif;border:1px solid;transition:all .2s}
+.btn-sm.wine{color:var(--blush);border-color:rgba(196,120,106,0.4);background:transparent}
+.btn-sm.wine:hover{background:var(--wine);color:var(--cream);border-color:var(--wine)}
+.btn-sm.gray{color:rgba(250,246,240,0.3);border-color:rgba(250,246,240,0.15);background:transparent}
+.btn-sm.gray:hover{color:var(--gold);border-color:rgba(201,164,90,0.4)}
+.articles-list{display:flex;flex-direction:column;gap:1px}
+.article-card{background:var(--mist);border-left:2px solid transparent;padding:1.8rem;transition:border-color .25s}
+.article-card:hover{border-left-color:var(--gold)}
+.art-meta{display:flex;align-items:center;gap:.7rem;margin-bottom:.6rem;flex-wrap:wrap}
+.art-tag{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,164,90,0.3);padding:2px 8px}
+.art-date{font-size:.7rem;color:rgba(250,246,240,0.3)}
+.article-card h4{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--cream);margin-bottom:.5rem}
+.article-card p{font-size:.84rem;color:rgba(250,246,240,0.45);line-height:1.7}
+
+/* ── DOWNLOADS ── */
+#downloads{background:var(--ink)}
+.downloads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px}
+.download-card{background:var(--mist);padding:2rem;display:flex;flex-direction:column;gap:.6rem;transition:background .25s}
+.download-card:hover{background:rgba(92,26,40,0.2)}
+.dl-icon{font-size:1.4rem;margin-bottom:.2rem}
+.dl-tag{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);opacity:.65}
+.download-card h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--cream)}
+.download-card p{font-size:.82rem;color:rgba(250,246,240,0.43);line-height:1.65;flex:1}
+.dl-btn{display:inline-block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(201,164,90,0.3);padding-bottom:2px;text-decoration:none;transition:border-color .2s;align-self:flex-start;cursor:pointer;background:none;font-family:'Inter',sans-serif;margin-top:.4rem}
+.dl-btn:hover{border-color:var(--gold)}
+
+/* ── SHOP ── */
+#shop{background:var(--deep)}
+.product-form-wrap{background:var(--mist);border:1px solid rgba(201,164,90,0.12);border-radius:1px;padding:2rem;margin-bottom:2.5rem}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1px}
+.product-card{background:var(--mist);overflow:hidden;transition:background .25s}
+.product-card:hover{background:rgba(92,26,40,0.15)}
+.prod-img{background:rgba(13,6,8,0.5);height:140px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;border-bottom:1px solid rgba(201,164,90,0.08)}
+.prod-body{padding:1.4rem}
+.prod-type{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;opacity:.65}
+.prod-body h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;color:var(--cream);margin-bottom:.4rem}
+.prod-body p{font-size:.81rem;color:rgba(250,246,240,0.43);line-height:1.62;margin-bottom:1rem}
+.prod-footer{display:flex;align-items:center;justify-content:space-between;padding:.2rem 1.4rem 1.4rem}
+.price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold)}
+.prod-actions{display:flex;gap:.4rem;align-items:center}
+
+/* ── NEWSLETTER ── */
+#newsletter{background:var(--ink);text-align:center;padding:6rem 5vw}
+.nl-form{display:flex;gap:.75rem;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.nl-input{flex:1;min-width:220px;border:1px solid rgba(201,164,90,0.2);border-radius:1px;padding:.85rem 1.1rem;font-family:'Inter',sans-serif;font-size:.88rem;background:rgba(250,246,240,0.04);color:var(--cream);outline:none;transition:border-color .2s}
+.nl-input::placeholder{color:rgba(250,246,240,0.25)}
+.nl-input:focus{border-color:var(--gold)}
+.nl-sub{font-size:.72rem;color:rgba(250,246,240,0.28);margin-top:1.2rem}
+.nl-sub a{color:var(--gold);text-decoration:none}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(250,246,240,0.28);text-align:center;padding:2.5rem 5vw;font-size:.72rem;letter-spacing:.06em;line-height:2;border-top:1px solid rgba(201,164,90,0.08)}
+footer a{color:rgba(201,164,90,0.6);text-decoration:none}
+footer a:hover{color:var(--gold)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--mist);border:1px solid rgba(201,164,90,0.2);color:var(--cream);padding:.7rem 1.6rem;border-radius:1px;font-size:.8rem;z-index:9999;transition:transform .35s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ── ADMIN ── */
+.admin-forms{display:none}
+.admin-forms.unlocked{display:block}
+.admin-bar{position:fixed;bottom:1.5rem;right:1.5rem;z-index:300}
+.admin-toggle{background:var(--ink);color:var(--gold);border:1px solid rgba(201,164,90,0.25);border-radius:0;padding:.5rem 1.2rem;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;transition:all .25s;box-shadow:0 4px 24px rgba(0,0,0,0.4)}
+.admin-toggle:hover{border-color:var(--gold)}
+.admin-modal{display:none;position:fixed;inset:0;z-index:400;background:rgba(13,6,8,.9);align-items:center;justify-content:center}
+.admin-modal.open{display:flex}
+.admin-box{background:var(--cream);border-radius:1px;padding:2.5rem;width:100%;max-width:360px;text-align:center}
+.admin-box h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--ink);margin-bottom:.4rem}
+.admin-box p{font-size:.82rem;color:var(--mid);opacity:.6;margin-bottom:1.5rem}
+.admin-input{width:100%;border:1px solid var(--smoke);border-radius:1px;padding:.75rem 1rem;font-family:'Inter',sans-serif;font-size:.95rem;background:var(--parchment);color:var(--ink);outline:none;text-align:center;letter-spacing:.1em;margin-bottom:1rem;transition:border-color .2s}
+.admin-input:focus{border-color:var(--wine)}
+.admin-error{font-size:.78rem;color:var(--wine);margin-bottom:.8rem;min-height:1.2rem}
+.admin-lock-btn{width:100%;padding:.8rem;background:var(--ink);color:var(--cream);border:none;border-radius:1px;font-family:'Inter',sans-serif;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.admin-lock-btn:hover{background:var(--burgundy)}
+
+@media(max-width:600px){
+  section{padding:4rem 1.2rem}
+  #disclaimer{padding:4rem 1.2rem}
+  #newsletter{padding:4.5rem 1.2rem}
+  .hero{padding:6rem 1.2rem 4rem}
+  .nl-form{flex-direction:column}
+  .nl-input{min-width:100%}
+  .gallery-header-row{flex-direction:column;align-items:flex-start}
+}
+
+/* ── CART DRAWER ── */
+.cart-fab{position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:250;background:var(--wine);color:var(--cream);border:none;border-radius:4px 0 0 4px;padding:1rem 0.6rem;cursor:pointer;font-family:'Inter',sans-serif;display:flex;flex-direction:column;align-items:center;gap:0.3rem;transition:background .2s;box-shadow:-4px 0 20px rgba(0,0,0,0.4)}
+.cart-fab:hover{background:var(--burgundy)}
+.cart-fab-icon{font-size:1.2rem}
+.cart-fab-label{font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg)}
+.cart-badge{background:var(--gold);color:var(--ink);border-radius:50%;width:18px;height:18px;font-size:0.6rem;font-weight:500;display:flex;align-items:center;justify-content:center;position:absolute;top:6px;right:6px;display:none}
+.cart-badge.visible{display:flex}
+
+.cart-drawer{position:fixed;top:0;right:-420px;width:100%;max-width:420px;height:100vh;z-index:600;background:var(--mist);border-left:1px solid rgba(201,164,90,0.15);display:flex;flex-direction:column;transition:right .35s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(0,0,0,0.5)}
+.cart-drawer.open{right:0}
+.cart-drawer-head{padding:1.6rem 1.8rem;border-bottom:1px solid rgba(201,164,90,0.1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.cart-drawer-head h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--cream)}
+.cart-close{background:none;border:none;color:rgba(250,246,240,0.4);font-size:1.6rem;cursor:pointer;line-height:1;transition:color .2s}
+.cart-close:hover{color:var(--cream)}
+.cart-items{flex:1;overflow-y:auto;padding:1.2rem 1.8rem}
+.cart-empty{text-align:center;padding:3rem 0;color:rgba(250,246,240,0.3);font-style:italic;font-size:0.88rem}
+.cart-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(201,164,90,0.08)}
+.cart-item-icon{font-size:1.6rem;flex-shrink:0;width:44px;height:44px;background:rgba(13,6,8,0.4);display:flex;align-items:center;justify-content:center;border-radius:1px}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-title{font-size:0.88rem;color:var(--cream);line-height:1.35;margin-bottom:0.2rem}
+.cart-item-type{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);opacity:.6}
+.cart-item-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);flex-shrink:0}
+.cart-item-controls{display:flex;align-items:center;gap:0.5rem;margin-top:0.4rem}
+.qty-btn{background:rgba(201,164,90,0.1);border:1px solid rgba(201,164,90,0.2);color:var(--cream);width:24px;height:24px;border-radius:1px;cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+.qty-btn:hover{background:rgba(201,164,90,0.2)}
+.qty-display{font-size:0.82rem;color:var(--cream);min-width:20px;text-align:center}
+.cart-remove{background:none;border:none;color:rgba(250,246,240,0.2);font-size:0.75rem;cursor:pointer;margin-left:0.4rem;transition:color .2s;padding:0}
+.cart-remove:hover{color:var(--rose)}
+.cart-footer{padding:1.4rem 1.8rem;border-top:1px solid rgba(201,164,90,0.1);flex-shrink:0;background:var(--deep)}
+.cart-summary{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.2rem}
+.cart-total-label{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,246,240,0.4)}
+.cart-total-amount{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--gold)}
+.paypal-btn-wrap{width:100%}
+.paypal-btn-wrap #paypal-button-container{min-height:48px}
+.cart-secure{font-size:0.65rem;color:rgba(250,246,240,0.25);text-align:center;margin-top:0.8rem;letter-spacing:0.06em}
+.cart-overlay{display:none;position:fixed;inset:0;z-index:590;background:rgba(13,6,8,0.6);backdrop-filter:blur(2px)}
+.cart-overlay.open{display:block}
+
+/* ── PRODUCT CARD ADD TO CART ── */
+.add-to-cart-btn{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.45rem 1rem;border-radius:1px;cursor:pointer;font-family:'Inter',sans-serif;border:1px solid rgba(201,164,90,0.3);color:var(--gold);background:transparent;transition:all .2s}
+.add-to-cart-btn:hover{background:rgba(201,164,90,0.1);border-color:var(--gold)}
+.add-to-cart-btn.added{border-color:var(--wine);color:var(--blush)}
+</style>
+
+</head>
+<body>
+
+<!-- ══ AGE GATE ══ -->
+<div id="age-gate">
+  <div class="gate-box">
+    <div class="gate-mark">A private club for married couples</div>
+    <div class="gate-divider"></div>
+    <h1>This site contains<br><em>adult content</em></h1>
+    <p>By entering, you confirm you are 18 years of age or older and consent to viewing mature, sexually explicit material.</p>
+    <p class="gate-warning">This content is intended for adults only.</p>
+    <div class="gate-btns">
+      <button class="gate-yes" onclick="enterSite()">I am 18 or older — Enter</button>
+      <a href="https://google.com" class="gate-no">I am under 18 — Leave</a>
+    </div>
+    <p class="gate-legal">By entering, you agree this site may contain nudity and adult content intended for consenting married adults. All individuals depicted are 18+.</p>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-logo">The Sex Your Marriage Truly Wants</div>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#ai">AI Spaces</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#articles">Articles</a></li>
+    <li><a href="#downloads">Downloads</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#newsletter" class="nav-cta">Join Free</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow">A free, anonymous club · Married couples only</div>
+  <h1>The Sex Your<br><em>Marriage</em><br>Truly Wants</h1>
+  <p class="hero-byline">by Mark Picasso, MPA</p>
+  <p class="hero-sub">Because the most erotic place in the world should be inside your marriage. Explore, ignite, and rediscover each other — safely, anonymously, and together.</p>
+  <div class="hero-btns">
+    <a href="#newsletter" class="btn btn-wine">Join the Club — Free</a>
+    <a href="#about" class="btn btn-outline">Learn More</a>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Explore</span>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div style="max-width:780px;margin:0 auto;text-align:center">
+    <div class="section-eyebrow">Welcome to the Club</div>
+    <h2 class="section-title">Marriage is important.<br><em>So is the fire inside it.</em></h2>
+    <p style="font-size:1rem;line-height:1.9;color:rgba(250,246,240,.55);margin-bottom:1.2rem;max-width:640px;margin-left:auto;margin-right:auto">We created this space because we believe marriage deserves more than routine. It deserves <em style="color:var(--gold-pale)">curiosity</em>, <em style="color:var(--gold-pale)">courage</em>, and <em style="color:var(--gold-pale)">chemistry</em>. A free, anonymous club built exclusively for married couples — to explore sexuality together, reignite desire, and put your marriage at the center of everything.</p>
+    <p style="font-size:1rem;line-height:1.9;color:rgba(250,246,240,.55);max-width:640px;margin:0 auto">Here, you'll never see real names. <strong style="color:var(--gold);font-weight:400">Avatars only.</strong> No judgment. No exposure. Just two people who chose each other — learning, sharing, and growing closer than they ever thought possible.</p>
+  </div>
+  <div class="pillars">
+    <div class="pillar"><div class="pillar-icon">🔥</div><div class="pillar-label">Reignite Desire</div><p>Rediscover what made you reach for each other — and find new reasons to keep reaching.</p></div>
+    <div class="pillar"><div class="pillar-icon">🎭</div><div class="pillar-label">Stay Anonymous</div><p>Avatars instead of faces. Freedom instead of fear. Explore without exposure.</p></div>
+    <div class="pillar"><div class="pillar-icon">💬</div><div class="pillar-label">Share & Connect</div><p>Talk with other married couples. Share what works. Try new ideas together.</p></div>
+    <div class="pillar"><div class="pillar-icon">💍</div><div class="pillar-label">Faithfully Yours</div><p>Built on fidelity. Everything here pulls you closer to your partner — not away.</p></div>
+    <div class="pillar"><div class="pillar-icon">🎁</div><div class="pillar-label">Free to Join</div><p>No paywalls to belong. Free downloads, free AI tools, free community — always.</p></div>
+    <div class="pillar"><div class="pillar-icon">✨</div><div class="pillar-label">Something for Everyone</div><p>Every couple is different. Browse at your own pace, take what resonates, leave what doesn't.</p></div>
+  </div>
+</section>
+
+<!-- ══ DISCLAIMER ══ -->
+<section id="disclaimer">
+  <div class="disclaimer-box">
+    <div class="section-eyebrow">A Note Before You Explore</div>
+    <h3>We have something for everyone — and that's the point.</h3>
+    <p>As you explore this club, you may encounter ideas, content, or conversations that feel new, unfamiliar, or outside what you'd normally consider. That's completely okay. Every couple is beautifully different, with their own comfort levels, boundaries, and desires. There is no pressure here — only possibility.</p>
+    <p>You are always free to take what resonates and leave what doesn't. Curiosity is welcome. Judgment is not.</p>
+    <p class="disclaimer-highlight">This club is exclusively for couples who are faithful to one another. Everything here is designed to strengthen your bond, deepen your intimacy, and bring the two of you closer — together.</p>
+    <p class="founder">— Mark Picasso, MPA · Founder</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ AI SPACES ══ -->
+<section id="ai">
+  <div class="section-eyebrow">Powered by AI</div>
+  <h2 class="section-title">AI <em>Spaces</em></h2>
+  <p class="section-desc">Private AI tools built just for couples. Use them alone or together — each response is unique to you.</p>
+
+  <div class="ai-grid">
+    <div class="ai-card" onclick="openAI('spark')">
+      <div class="ai-card-icon">🔥</div>
+      <div class="ai-card-label">Intimacy</div>
+      <h3>Intimacy Spark</h3>
+      <p>Tell the AI your mood, comfort level, and setting — it crafts personalized intimacy ideas just for the two of you.</p>
+      <span class="launch-btn">Open →</span>
+    </div>
+    <div class="ai-card" onclick="openAI('datenight')">
+      <div class="ai-card-icon">🌙</div>
+      <div class="ai-card-label">Date Night</div>
+      <h3>Date Night Designer</h3>
+      <p>Get a full custom date night — atmosphere, music mood, activity sequence, conversation starters, and a surprise ending.</p>
+      <span class="launch-btn">Design My Night →</span>
+    </div>
+    <div class="ai-card" onclick="openAI('letter')">
+      <div class="ai-card-icon">💌</div>
+      <div class="ai-card-label">Words</div>
+      <h3>Love Letter Writer</h3>
+      <p>Let AI craft something passionate, tender, or bold to send to your partner — in your voice, your tone.</p>
+      <span class="launch-btn">Write It →</span>
+    </div>
+    <div class="ai-card" onclick="openAI('convo')">
+      <div class="ai-card-icon">💬</div>
+      <div class="ai-card-label">Connection</div>
+      <h3>Conversation Sparker</h3>
+      <p>Deep, playful, or daring questions AI generates for couples to ask each other tonight.</p>
+      <span class="launch-btn">Spark a Convo →</span>
+    </div>
+  </div>
+
+  <!-- Create Together -->
+  <div style="margin-top:4.5rem">
+    <div class="section-eyebrow">Create Together</div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--cream);margin-bottom:.6rem">Make something <em style="color:var(--blush)">beautiful</em> together</h3>
+    <p style="font-size:.86rem;color:rgba(250,246,240,.4);margin-bottom:.5rem">Use these tools to create images, videos, and art as a couple.</p>
+    <div class="create-grid">
+      <a href="https://digen.ai" target="_blank" class="create-card">
+        <div class="create-card-icon">🎨</div><h4>Digen AI</h4>
+        <p>Create stunning AI-generated images together.</p><span class="visit">Visit →</span>
+      </a>
+      <a href="https://klingai.com" target="_blank" class="create-card">
+        <div class="create-card-icon">🎬</div><h4>Kling AI</h4>
+        <p>Generate cinematic AI videos from your ideas.</p><span class="visit">Visit →</span>
+      </a>
+      <a href="https://runwayml.com" target="_blank" class="create-card">
+        <div class="create-card-icon">🎞️</div><h4>Runway</h4>
+        <p>Professional AI video creation and editing.</p><span class="visit">Visit →</span>
+      </a>
+      <a href="https://www.canva.com" target="_blank" class="create-card">
+        <div class="create-card-icon">✏️</div><h4>Canva</h4>
+        <p>Design love notes and creative projects together.</p><span class="visit">Visit →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AI MODALS ══ -->
+<div class="modal-bg" id="modal-spark">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeAI('spark')">×</button>
+      <h2>🔥 Intimacy Spark</h2>
+      <p>Answer a few questions — get personalized intimacy ideas.</p>
+    </div>
+    <div class="modal-body">
+      <div class="ai-form">
+        <div class="field"><label class="ai-label">What's the mood tonight?</label>
+          <select class="ai-select" id="spark-mood"><option>Playful & light</option><option>Deeply romantic</option><option>Adventurous & bold</option><option>Slow & sensual</option><option>Reconnecting after distance</option></select></div>
+        <div class="field"><label class="ai-label">Comfort level</label>
+          <select class="ai-select" id="spark-comfort"><option>Keep it gentle & tender</option><option>Moderately adventurous</option><option>We're open to anything</option></select></div>
+        <div class="field"><label class="ai-label">Your setting</label>
+          <select class="ai-select" id="spark-setting"><option>At home, quiet evening</option><option>Weekend getaway</option><option>Limited time — need something quick</option><option>We have the whole night</option></select></div>
+        <div class="field"><label class="ai-label">Anything you'd like to focus on? (optional)</label>
+          <textarea class="ai-textarea" id="spark-extra" placeholder="e.g. we want to feel more connected, try something new, focus on touch..."></textarea></div>
+        <button class="btn btn-wine" onclick="runAI('spark')" style="align-self:flex-start">Spark Us ✨</button>
+        <div class="ai-result" id="spark-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-datenight">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeAI('datenight')">×</button>
+      <h2>🌙 Date Night Designer</h2>
+      <p>We'll build your perfect evening from start to finish.</p>
+    </div>
+    <div class="modal-body">
+      <div class="ai-form">
+        <div class="field"><label class="ai-label">What vibe are you going for?</label>
+          <select class="ai-select" id="dn-vibe"><option>Luxurious & indulgent</option><option>Playful & fun</option><option>Deeply intimate & slow</option><option>Spontaneous & surprising</option><option>Romantic classics — candles, wine, music</option></select></div>
+        <div class="field"><label class="ai-label">How much time do you have?</label>
+          <select class="ai-select" id="dn-time"><option>2 hours</option><option>A full evening (4-5 hrs)</option><option>The whole night</option><option>A quick hour</option></select></div>
+        <div class="field"><label class="ai-label">Budget feel</label>
+          <select class="ai-select" id="dn-budget"><option>Free / at home only</option><option>Low spend — simple extras</option><option>We want to splurge a little</option></select></div>
+        <div class="field"><label class="ai-label">Any special wishes? (optional)</label>
+          <textarea class="ai-textarea" id="dn-extra" placeholder="e.g. we love music, want a massage element, have kids so need quiet ideas..."></textarea></div>
+        <button class="btn btn-wine" onclick="runAI('datenight')" style="align-self:flex-start">Design Our Night 🌙</button>
+        <div class="ai-result" id="datenight-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-letter">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeAI('letter')">×</button>
+      <h2>💌 Love Letter Writer</h2>
+      <p>Tell us about your partner — we'll write something unforgettable.</p>
+    </div>
+    <div class="modal-body">
+      <div class="ai-form">
+        <div class="field"><label class="ai-label">Tone</label>
+          <select class="ai-select" id="ll-tone"><option>Deeply romantic & tender</option><option>Passionately bold</option><option>Playful & flirty</option><option>Heartfelt & vulnerable</option><option>Poetic & beautiful</option></select></div>
+        <div class="field"><label class="ai-label">What do you love most about them?</label>
+          <textarea class="ai-textarea" id="ll-about" placeholder="Tell us something specific — a moment, a quality, the way they make you feel..."></textarea></div>
+        <div class="field"><label class="ai-label">Length</label>
+          <select class="ai-select" id="ll-length"><option>Short & sweet (1 paragraph)</option><option>Medium (3 paragraphs)</option><option>Full letter</option></select></div>
+        <button class="btn btn-wine" onclick="runAI('letter')" style="align-self:flex-start">Write My Letter 💌</button>
+        <div class="ai-result" id="letter-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-convo">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeAI('convo')">×</button>
+      <h2>💬 Conversation Sparker</h2>
+      <p>Questions that open doors between you.</p>
+    </div>
+    <div class="modal-body">
+      <div class="ai-form">
+        <div class="field"><label class="ai-label">What kind of questions?</label>
+          <select class="ai-select" id="cv-type"><option>Deep & emotional</option><option>Playful & light</option><option>Daring & bold</option><option>About our future together</option><option>About our desires & fantasies</option></select></div>
+        <div class="field"><label class="ai-label">How many?</label>
+          <select class="ai-select" id="cv-count"><option>5 questions</option><option>10 questions</option><option>3 really deep ones</option></select></div>
+        <button class="btn btn-wine" onclick="runAI('convo')" style="align-self:flex-start">Generate Questions 💬</button>
+        <div class="ai-result" id="convo-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══ GALLERY (CLOUDINARY) ══ -->
+<section id="gallery">
+  <div class="gallery-header-row">
+    <div>
+      <div class="section-eyebrow">Visual Space</div>
+      <h2 class="section-title" style="margin-bottom:0">The <em>Gallery</em></h2>
+    </div>
+    <button class="upload-cta" id="upload-media-btn" onclick="openCloudinaryUpload()">+ Upload Media</button>
+  </div>
+  <p class="section-desc">Click any image to enlarge.</p>
+  <div class="media-tabs">
+    <button class="media-tab active" onclick="filterMedia('all',this)">All</button>
+    <button class="media-tab" onclick="filterMedia('image',this)">Images</button>
+    <button class="media-tab" onclick="filterMedia('video',this)">Videos</button>
+  </div>
+  <div class="media-grid" id="media-grid">
+    <div class="empty-state">No media yet — upload something beautiful.</div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lb-inner" id="lb-inner">
+    <button class="lb-close" onclick="closeLightbox(null,true)">×</button>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══ ARTICLES ══ -->
+<section id="articles">
+  <div class="section-eyebrow">Written Space</div>
+  <h2 class="section-title">Articles & <em>Guides</em></h2>
+  <p class="section-desc">Insights, guides, and wisdom for married couples.</p>
+  <div class="admin-forms" id="admin-article-form">
+    <div class="article-form-wrap">
+      <div class="form-title" id="art-form-head">New Article</div>
+      <div class="field"><label>Title</label><input type="text" id="art-title" placeholder="e.g. Rebuilding Intimacy After Distance"></div>
+      <div class="row">
+        <div class="field"><label>Category</label>
+          <select id="art-cat"><option>Intimacy</option><option>Desire</option><option>Communication</option><option>Healing</option><option>Date Night</option><option>Spirituality</option><option>Other</option></select></div>
+        <div class="field"><label>Author</label><input type="text" id="art-author" placeholder="Mark Picasso, MPA"></div>
+      </div>
+      <div class="field"><label>Content</label><textarea id="art-body" placeholder="Write your article here..."></textarea></div>
+      <div class="form-actions">
+        <button class="btn btn-wine" style="font-size:.72rem;padding:.7rem 1.6rem" onclick="saveArticle()">Save Article</button>
+        <button class="btn-sm gray" onclick="clearArticleForm()">Clear</button>
+        <span id="art-edit-id" style="display:none"></span>
+      </div>
+    </div>
+  </div>
+  <div class="articles-list" id="articles-list">
+    <p style="opacity:.25;font-size:.85rem;font-style:italic">No articles yet.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FREE DOWNLOADS ══ -->
+<section id="downloads">
+  <div class="section-eyebrow">Free Resources</div>
+  <h2 class="section-title">Free <em>Downloads</em></h2>
+  <p class="section-desc">No purchase needed. Take these guides and use them tonight.</p>
+  <div class="downloads-grid">
+    <div class="download-card">
+      <div class="dl-icon">📄</div><div class="dl-tag">Intimacy Guide</div>
+      <h4>7 Conversations Every Married Couple Should Have</h4>
+      <p>Prompts and frameworks to open real dialogue about desire, needs, and connection.</p>
+      <span class="dl-btn" onclick="toast('PDF coming soon — check back!')">Download Free →</span>
+    </div>
+    <div class="download-card">
+      <div class="dl-icon">📄</div><div class="dl-tag">Date Night</div>
+      <h4>The Ultimate At-Home Date Night Playbook</h4>
+      <p>30 ideas for date nights that don't require leaving the house — from simple to unforgettable.</p>
+      <span class="dl-btn" onclick="toast('PDF coming soon — check back!')">Download Free →</span>
+    </div>
+    <div class="download-card">
+      <div class="dl-icon">📄</div><div class="dl-tag">Reconnection</div>
+      <h4>The 14-Day Intimacy Reset</h4>
+      <p>A gentle two-week journey to reconnect emotionally and physically — one day at a time.</p>
+      <span class="dl-btn" onclick="toast('PDF coming soon — check back!')">Download Free →</span>
+    </div>
+    <div class="download-card">
+      <div class="dl-icon">📄</div><div class="dl-tag">Desire</div>
+      <h4>Rediscovering Each Other: A Couple's Workbook</h4>
+      <p>Exercises and reflections for couples who want to see each other with fresh eyes.</p>
+      <span class="dl-btn" onclick="toast('PDF coming soon — check back!')">Download Free →</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ SHOP ══ -->
+<section id="shop">
+  <div class="section-eyebrow">Resource Space</div>
+  <h2 class="section-title">The <em>Shop</em></h2>
+  <p class="section-desc">Books, guides, courses, and curated products for married couples.</p>
+  <div class="admin-forms" id="admin-product-form">
+    <div class="product-form-wrap">
+      <div class="form-title" id="prod-form-head">Add a Product</div>
+      <div class="row">
+        <div class="field" style="flex:2"><label>Product Title</label><input type="text" id="prod-title" placeholder="e.g. The Sex Your Marriage Wants — VR Edition"></div>
+        <div class="field" style="flex:1"><label>Price ($)</label><input type="number" id="prod-price" placeholder="9.99" min="0" step=".01"></div>
+      </div>
+      <div class="field"><label>Short Description</label><textarea id="prod-desc" style="min-height:80px" placeholder="What will this help couples with?"></textarea></div>
+      <div class="row">
+        <div class="field" style="flex:2"><label>Buy Link</label><input type="url" id="prod-link" placeholder="https://payhip.com/your-product"></div>
+        <div class="field" style="flex:1"><label>Type</label>
+          <select id="prod-type"><option value="📖 Book">📖 Book</option><option value="🎥 Course">🎥 Course</option><option value="📄 Guide">📄 Guide</option><option value="🎧 Audio">🎧 Audio</option><option value="💬 Session">💬 Session</option><option value="🛍️ Product">🛍️ Product</option></select></div>
+      </div>
+      <div class="form-actions" style="margin-top:.8rem">
+        <button class="btn btn-wine" style="font-size:.72rem;padding:.7rem 1.6rem" onclick="saveProduct()">Add Product</button>
+        <button class="btn-sm gray" onclick="clearProductForm()">Clear</button>
+        <span id="prod-edit-id" style="display:none"></span>
+      </div>
+    </div>
+  </div>
+  <div class="products-grid" id="products-grid">
+    <p style="opacity:.25;font-size:.85rem;font-style:italic;grid-column:1/-1">No products yet.</p>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER ══ -->
+<section id="newsletter">
+  <div class="section-eyebrow" style="color:var(--gold)">Stay Connected</div>
+  <h2 class="section-title" style="margin-bottom:.8rem">Join the Club.<br><em>It's completely free.</em></h2>
+  <p class="section-desc" style="margin:0 auto 2.5rem;color:rgba(250,246,240,.45)">Articles, intimacy ideas, free downloads, and exclusive content delivered to your inbox. No spam — ever.</p>
+  <div class="nl-form">
+    <input type="email" class="nl-input" id="nl-email" placeholder="Your email address">
+    <a href="https://substack.com/@markpicassompa" target="_blank" class="btn btn-wine" onclick="handleNewsletter()">Subscribe Free</a>
+  </div>
+  <p class="nl-sub">Powered by <a href="https://substack.com/@markpicassompa" target="_blank">Mark Picasso's Substack</a> · No spam · Unsubscribe anytime</p>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--blush);margin-bottom:.5rem">The Sex Your Marriage Truly Wants</p>
+  <p>A free, anonymous club for married couples · Founded by Mark Picasso, MPA</p>
+  <p style="margin-top:.4rem">
+    <a href="https://substack.com/@markpicassompa" target="_blank">Newsletter</a> &nbsp;·&nbsp;
+    <a href="#about">About</a> &nbsp;·&nbsp;
+    <a href="#ai">AI Spaces</a> &nbsp;·&nbsp;
+    <a href="#downloads">Downloads</a> &nbsp;·&nbsp;
+    <a href="#shop">Shop</a>
+  </p>
+  <p style="margin-top:.8rem;font-size:.66rem;opacity:.3">© 2026 · For faithful married couples 18+ only · All rights reserved · All individuals depicted are adults</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- ══ STUDIO FAB ══ -->
+<button class="studio-fab" id="studio-fab" onclick="openStudio()" style="display:none">✦ Studio</button>
+
+<!-- ══ STUDIO OVERLAY ══ -->
+<div class="studio-overlay" id="studio-overlay" onclick="closeStudio()"></div>
+
+<!-- ══ STUDIO PANEL ══ -->
+<div class="studio-panel" id="studio-panel">
+  <div class="studio-head">
+    <div>
+      <h3>✦ Studio</h3>
+      <p>Upload media · Write articles</p>
+    </div>
+    <button class="studio-close" onclick="closeStudio()">×</button>
+  </div>
+  <div class="studio-tabs">
+    <button class="studio-tab active" onclick="switchStudioTab('photos',this)">📷 Photos & Video</button>
+    <button class="studio-tab" onclick="switchStudioTab('articles',this)">✍️ Articles</button>
+    <button class="studio-tab" onclick="switchStudioTab('manage',this)">🗂 Manage</button>
+  </div>
+  <div class="studio-body">
+
+    <!-- PHOTOS PANE -->
+    <div class="studio-pane active" id="studio-pane-photos">
+      <div class="studio-upload-zone" onclick="openCloudinaryUpload()">
+        <div class="studio-upload-icon">🌸</div>
+        <p><strong>Click to upload</strong> photos or videos</p>
+        <p style="margin-top:.3rem;font-size:.75rem">Images & Video · Stored on Cloudinary CDN</p>
+      </div>
+      <div id="studio-gallery-grid" class="studio-gallery-grid"></div>
+    </div>
+
+    <!-- ARTICLES PANE -->
+    <div class="studio-pane" id="studio-pane-articles">
+      <div class="studio-field"><label>Title</label><input type="text" id="s-art-title" placeholder="e.g. Rebuilding Intimacy After Distance"></div>
+      <div style="display:flex;gap:.75rem">
+        <div class="studio-field" style="flex:1"><label>Category</label>
+          <select id="s-art-cat"><option>Intimacy</option><option>Desire</option><option>Communication</option><option>Healing</option><option>Date Night</option><option>Spirituality</option><option>Other</option></select></div>
+        <div class="studio-field" style="flex:1"><label>Author</label><input type="text" id="s-art-author" value="Mark Picasso, MPA"></div>
+      </div>
+      <div class="studio-field"><label>Content</label><textarea id="s-art-body" placeholder="Write your article here..."></textarea></div>
+      <span id="s-art-edit-id" style="display:none"></span>
+    </div>
+
+    <!-- MANAGE PANE -->
+    <div class="studio-pane" id="studio-pane-manage">
+      <p style="font-size:.72rem;color:rgba(250,246,240,0.35);margin-bottom:1rem;letter-spacing:.06em;text-transform:uppercase">Published Articles</p>
+      <div id="studio-articles-list"></div>
+      <p style="font-size:.72rem;color:rgba(250,246,240,0.35);margin:1.5rem 0 1rem;letter-spacing:.06em;text-transform:uppercase">Gallery (<span id="studio-media-count">0</span> items)</p>
+      <div id="studio-mini-grid" class="studio-gallery-grid"></div>
+    </div>
+
+  </div>
+  <div class="studio-footer" id="studio-footer-photos">
+    <button class="btn btn-wine" style="font-size:.72rem;padding:.65rem 1.4rem" onclick="openCloudinaryUpload()">+ Upload Media</button>
+    <span style="font-size:.72rem;color:rgba(250,246,240,.3)" id="studio-media-label">0 items in gallery</span>
+  </div>
+  <div class="studio-footer" id="studio-footer-articles" style="display:none">
+    <button class="btn btn-wine" style="font-size:.72rem;padding:.65rem 1.4rem" onclick="studioSaveArticle()">Save Article</button>
+    <button class="btn-sm gray" onclick="studioClearArticle()">Clear</button>
+  </div>
+  <div class="studio-footer" id="studio-footer-manage" style="display:none">
+    <span style="font-size:.76rem;color:rgba(250,246,240,.3);font-style:italic">Click any article to edit it</span>
+  </div>
+</div>
+
+<!-- ══ CART FAB ══ -->
+<button class="cart-fab" onclick="openCart()" aria-label="Shopping cart">
+  <span class="cart-fab-icon">🛒</span>
+  <span class="cart-badge" id="cart-badge">0</span>
+  <span class="cart-fab-label">Cart</span>
+</button>
+
+<!-- ══ CART OVERLAY ══ -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+
+<!-- ══ CART DRAWER ══ -->
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-drawer-head">
+    <h3>Your Cart</h3>
+    <button class="cart-close" onclick="closeCart()">×</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <div class="cart-empty">Your cart is empty.<br>Add something from the shop.</div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-summary">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amount" id="cart-total">$0.00</span>
+    </div>
+    <div class="paypal-btn-wrap">
+      <div id="paypal-button-container"></div>
+    </div>
+    <p class="cart-secure">🔒 Secure checkout via PayPal · No account required</p>
+  </div>
+</div>
+
+<!-- ══ ADMIN BAR ══ -->
+<div class="admin-bar">
+  <button class="admin-toggle" onclick="openAdminModal()" id="admin-btn">🔐 Admin</button>
+</div>
+
+<!-- ══ ADMIN MODAL ══ -->
+<div class="admin-modal" id="admin-modal">
+  <div class="admin-box">
+    <h3>Admin Access</h3>
+    <p>Enter your password to manage content</p>
+    <input type="password" class="admin-input" id="admin-password" placeholder="••••••••••••" onkeydown="if(event.key==='Enter')checkPassword()">
+    <div class="admin-error" id="admin-error"></div>
+    <button class="admin-lock-btn" onclick="checkPassword()">Unlock Admin</button>
+  </div>
+</div>
+
+<!-- ══ PAYPAL SDK ══ -->
+<!-- NOTE: Replace YOUR_PAYPAL_CLIENT_ID below with your live PayPal client ID from developer.paypal.com -->
+<!-- Your PayPal business email Markformohammed@gmail.com is set as payee in the order creation below -->
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD&intent=capture"></script>
+
+<!-- ══ CLOUDINARY WIDGET ══ -->
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────
+const CLOUDINARY_CLOUD = 'dkxkoe3af';
+const CLOUDINARY_PRESET = 'jkwhmbjg';
+
+// ── UTILS ───────────────────────────────────────────────
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+function $(id){return document.getElementById(id)}
+
+// ── AGE GATE ────────────────────────────────────────────
+// Always show on every page load — no bypass
+document.body.style.overflow = 'hidden';
+function enterSite(){
+  $('age-gate').classList.add('gone');
+  document.body.style.overflow = '';
+}
+
+// ── NEWSLETTER ──────────────────────────────────────────
+function handleNewsletter(){
+  const email=$('nl-email').value.trim();
+  if(email) toast('Redirecting to Substack — see you there! 💌');
+}
+
+// ── CLOUDINARY MEDIA ────────────────────────────────────
+let media = JSON.parse(localStorage.getItem('tsymtw_cloudinary_media') || '[]');
+let mediaFilter = 'all';
+let cloudWidget = null;
+
+function openCloudinaryUpload(){
+  if(!adminUnlocked){
+    toast('Please unlock Admin mode first to upload media.');
+    return;
+  }
+  if(!cloudWidget){
+    if(typeof cloudinary === 'undefined'){
+      toast('Upload widget is still loading — please try again in a moment.');
+      return;
+    }
+    cloudWidget = cloudinary.createUploadWidget({
+      cloudName: CLOUDINARY_CLOUD,
+      uploadPreset: CLOUDINARY_PRESET,
+      multiple: true,
+      resourceType: 'auto',
+      sources: ['local','url','camera'],
+      showAdvancedOptions: false,
+      cropping: false,
+      theme: 'minimal',
+      styles: {
+        palette: {
+          window: '#150B10',
+          windowBorder: '#5C1A28',
+          tabIcon: '#C9A45A',
+          menuIcons: '#C9A45A',
+          textDark: '#FAF6F0',
+          textLight: '#FAF6F0',
+          link: '#C9A45A',
+          action: '#7A2338',
+          inactiveTabIcon: '#6B4A55',
+          error: '#9B3A52',
+          inProgress: '#C9A45A',
+          complete: '#C9A45A',
+          sourceBg: '#0D0608'
+        }
+      }
+    }, (error, result) => {
+      if(error){ console.error('Cloudinary error:', error); toast('Upload error — please try again.'); return; }
+      if(result && result.event === 'success'){
+        const info = result.info;
+        const item = {
+          id: info.public_id,
+          src: info.secure_url,
+          type: info.resource_type === 'video' ? 'video' : 'image',
+          name: info.original_filename,
+          public_id: info.public_id,
+          width: info.width,
+          height: info.height
+        };
+        media.unshift(item);
+        localStorage.setItem('tsymtw_cloudinary_media', JSON.stringify(media));
+        renderMedia();
+        renderStudioGallery();
+        toast('Uploaded: ' + info.original_filename);
+      }
+    });
+  }
+  cloudWidget.open();
+}
+
+function filterMedia(type,btn){
+  mediaFilter=type;
+  document.querySelectorAll('.media-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderMedia();
+}
+
+function renderMedia(){
+  const grid=$('media-grid');
+  const list = mediaFilter==='all' ? media : media.filter(m=>m.type===mediaFilter);
+  if(!list.length){
+    grid.innerHTML='<div class="empty-state">No media yet — upload something beautiful.</div>';
+    return;
+  }
+  grid.innerHTML = list.map(item => {
+    if(item.type==='video'){
+      return `<div class="media-card" data-id="${item.id}">
+        <video src="${item.src}" muted playsinline preload="metadata"></video>
+        <span class="vid-badge">Video</span>
+        <button class="del-btn" onclick="delMedia('${item.id}',event)">✕</button>
+      </div>`;
+    } else {
+      // Use Cloudinary transformations for thumbnails
+      const thumb = item.src.replace('/upload/', '/upload/w_400,h_400,c_fill,q_auto,f_auto/');
+      return `<div class="media-card" data-id="${item.id}">
+        <img src="${thumb}" alt="${item.name}" loading="lazy">
+        <button class="del-btn" onclick="delMedia('${item.id}',event)">✕</button>
+      </div>`;
+    }
+  }).join('');
+  grid.querySelectorAll('.media-card').forEach(c=>c.addEventListener('click',e=>{
+    if(e.target.classList.contains('del-btn'))return;
+    const it=media.find(m=>String(m.id)===String(c.dataset.id));
+    if(it) openLB(it);
+  }));
+}
+
+function delMedia(id,e){
+  e.stopPropagation();
+  if(!confirm('Remove this from your gallery?'))return;
+  media=media.filter(m=>String(m.id)!==String(id));
+  localStorage.setItem('tsymtw_cloudinary_media',JSON.stringify(media));
+  renderMedia();
+  toast('Removed from gallery.');
+}
+
+function openLB(item){
+  const i=$('lb-inner');
+  const closeBtn='<button class="lb-close" onclick="closeLightbox(null,true)">×</button>';
+  if(item.type==='video'){
+    i.innerHTML=`${closeBtn}<video src="${item.src}" controls autoplay style="max-width:90vw;max-height:88vh;border-radius:1px"></video>`;
+  } else {
+    const large = item.src.replace('/upload/','/upload/w_1200,q_auto,f_auto/');
+    i.innerHTML=`${closeBtn}<img src="${large}" alt="">`;
+  }
+  $('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeLightbox(e,force){
+  if(force||e?.target===$('lightbox')){
+    $('lightbox').classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+
+// ── ARTICLES ────────────────────────────────────────────
+let articles=JSON.parse(localStorage.getItem('tsymtw_articles')||'[]');
+
+function saveArticle(){
+  const title=$('art-title').value.trim(),body=$('art-body').value.trim(),cat=$('art-cat').value,author=$('art-author').value.trim(),editId=$('art-edit-id').textContent;
+  if(!title||!body){toast('Please add a title and content.');return}
+  if(editId){const i=articles.findIndex(a=>a.id===editId);if(i>-1)articles[i]={...articles[i],title,body,cat,author}}
+  else articles.unshift({id:Date.now().toString(),title,body,cat,author,date:new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})});
+  localStorage.setItem('tsymtw_articles',JSON.stringify(articles));clearArticleForm();renderArticles();toast(editId?'Article updated.':'Article saved.');
+}
+
+function clearArticleForm(){['art-title','art-body','art-author'].forEach(id=>$(id).value='');$('art-cat').value='Intimacy';$('art-edit-id').textContent='';$('art-form-head').textContent='New Article'}
+
+function renderArticles(){
+  const list=$('articles-list');
+  if(!articles.length){list.innerHTML='<p style="opacity:.25;font-size:.85rem;font-style:italic">No articles yet.</p>';return}
+  list.innerHTML=articles.map(a=>`<div class="article-card">
+    <div class="art-meta"><span class="art-tag">${a.cat}</span><span class="art-date">${a.date}${a.author?' · '+a.author:''}</span></div>
+    <h4>${a.title}</h4>
+    <p>${a.body.length>230?a.body.slice(0,230)+'…':a.body}</p>
+    <div class="form-actions" style="margin-top:.8rem">
+      <button class="btn-sm wine" onclick="editArticle('${a.id}')">Edit</button>
+      <button class="btn-sm gray" onclick="delArticle('${a.id}')">Delete</button>
+    </div>
+  </div>`).join('')
+}
+
+function editArticle(id){const a=articles.find(x=>x.id===id);if(!a)return;$('art-title').value=a.title;$('art-body').value=a.body;$('art-author').value=a.author||'';$('art-cat').value=a.cat;$('art-edit-id').textContent=a.id;$('art-form-head').textContent='Edit Article';$('articles').scrollIntoView({behavior:'smooth'})}
+function delArticle(id){if(!confirm('Delete this article?'))return;articles=articles.filter(a=>a.id!==id);localStorage.setItem('tsymtw_articles',JSON.stringify(articles));renderArticles();toast('Deleted.')}
+
+// ── PRODUCTS ────────────────────────────────────────────
+let products=JSON.parse(localStorage.getItem('tsymtw_products')||'[]');
+
+function saveProduct(){
+  const title=$('prod-title').value.trim(),desc=$('prod-desc').value.trim(),price=parseFloat($('prod-price').value)||0,link=$('prod-link').value.trim(),type=$('prod-type').value,editId=$('prod-edit-id').textContent;
+  if(!title){toast('Please add a product title.');return}
+  if(editId){const i=products.findIndex(p=>p.id===editId);if(i>-1)products[i]={...products[i],title,desc,price,link,type}}
+  else products.unshift({id:Date.now().toString(),title,desc,price,link,type});
+  localStorage.setItem('tsymtw_products',JSON.stringify(products));clearProductForm();renderProducts();toast(editId?'Product updated.':'Product added.');
+}
+
+function clearProductForm(){['prod-title','prod-desc','prod-link'].forEach(id=>$(id).value='');$('prod-price').value='';$('prod-type').value='📖 Book';$('prod-edit-id').textContent='';$('prod-form-head').textContent='Add a Product'}
+
+function renderProducts(){
+  const grid=$('products-grid');
+  if(!products.length){grid.innerHTML='<p style="opacity:.25;font-size:.85rem;font-style:italic;grid-column:1/-1">No products yet.</p>';return}
+  grid.innerHTML=products.map(p=>`<div class="product-card">
+    <div class="prod-img">${p.type.split(' ')[0]}</div>
+    <div class="prod-body"><div class="prod-type">${p.type.split(' ').slice(1).join(' ')}</div><h4>${p.title}</h4><p>${p.desc||'No description yet.'}</p></div>
+    <div class="prod-footer"><span class="price">$${parseFloat(p.price).toFixed(2)}</span>
+    <div class="prod-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('${p.id}')">+ Add to Cart</button>
+      ${p.link?`<a href="${p.link}" target="_blank" class="btn-sm wine" style="text-decoration:none">Buy Direct →</a>`:''}
+      <button class="btn-sm wine" onclick="editProduct('${p.id}')">Edit</button>
+      <button class="btn-sm gray" onclick="delProduct('${p.id}')">✕</button>
+    </div></div>
+  </div>`).join('')
+}
+
+function editProduct(id){const p=products.find(x=>x.id===id);if(!p)return;$('prod-title').value=p.title;$('prod-desc').value=p.desc||'';$('prod-price').value=p.price;$('prod-link').value=p.link||'';$('prod-type').value=p.type;$('prod-edit-id').textContent=p.id;$('prod-form-head').textContent='Edit Product';$('shop').scrollIntoView({behavior:'smooth'})}
+function delProduct(id){if(!confirm('Remove this product?'))return;products=products.filter(p=>p.id!==id);localStorage.setItem('tsymtw_products',JSON.stringify(products));renderProducts();toast('Removed.')}
+
+// ── AI SPACES ────────────────────────────────────────────
+function openAI(name){document.getElementById('modal-'+name).classList.add('open');document.body.style.overflow='hidden'}
+function closeAI(name){document.getElementById('modal-'+name).classList.remove('open');document.body.style.overflow=''}
+document.querySelectorAll('.modal-bg').forEach(m=>{m.addEventListener('click',e=>{if(e.target===m){m.classList.remove('open');document.body.style.overflow=''}})});
+
+async function runAI(type){
+  const resultEl=$(type+'-result');
+  resultEl.className='ai-result show';
+  resultEl.innerHTML='<span class="generating">Creating something beautiful for you two...</span>';
+
+  let prompt='';
+  if(type==='spark'){
+    const mood=$('spark-mood').value,comfort=$('spark-comfort').value,setting=$('spark-setting').value,extra=$('spark-extra').value;
+    prompt=`You are a warm, tasteful intimacy advisor for married couples. Generate 4-5 personalized intimacy ideas for a couple with the following profile:\n- Mood: ${mood}\n- Comfort level: ${comfort}\n- Setting: ${setting}\n${extra?'- Special focus: '+extra:''}\n\nWrite in a warm, sensual but tasteful tone. Format each idea with a short bold title and 2-3 sentences of description. Keep it romantic, respectful, and genuinely helpful for married couples.`;
+  } else if(type==='datenight'){
+    const vibe=$('dn-vibe').value,time=$('dn-time').value,budget=$('dn-budget').value,extra=$('dn-extra').value;
+    prompt=`You are a romantic date night planner for married couples. Design a complete date night with:\n- Vibe: ${vibe}\n- Time: ${time}\n- Budget: ${budget}\n${extra?'- Wishes: '+extra:''}\n\nStructure it as: 1) Setting the Scene, 2) The Opening, 3) The Main Experience, 4) Conversation Starters, 5) The Surprise Ending. Be specific, creative, romantic, and tasteful.`;
+  } else if(type==='letter'){
+    const tone=$('ll-tone').value,about=$('ll-about').value,length=$('ll-length').value;
+    prompt=`Write a beautiful love letter for a married person to give their spouse.\nTone: ${tone}\nWhat they love about their partner: ${about}\nLength: ${length}\n\nWrite the letter directly (starting with "My love," or similar). Make it feel personal, genuine, and deeply romantic. Do not add any preamble.`;
+  } else if(type==='convo'){
+    const qtype=$('cv-type').value,count=$('cv-count').value;
+    prompt=`Generate ${count} conversation questions for a married couple. Style: ${qtype}.\n\nFormat each as a numbered question. Make them genuinely thought-provoking and designed to bring a married couple closer together.`;
+  }
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await res.json();
+    if(data.error){ resultEl.innerHTML = 'Something went wrong — please try again.'; return; }
+    const text = data.content?.map(b=>b.text||'').join('\n') || 'Something went wrong. Please try again.';
+    resultEl.innerHTML = text
+      .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+      .replace(/\n/g,'<br>');
+  } catch(e){
+    resultEl.innerHTML='Something went wrong — please try again in a moment.';
+  }
+}
+
+// ── ADMIN ────────────────────────────────────────────────
+function simpleHash(str){
+  let hash=0;
+  for(let i=0;i<str.length;i++){const c=str.charCodeAt(i);hash=((hash<<5)-hash)+c;hash=hash&hash}
+  return Math.abs(hash).toString(16).padStart(16,'0').repeat(4).slice(0,64);
+}
+const CORRECT=simpleHash('Jesuschrist4321!');
+let adminUnlocked=false; // Always start locked — must enter password each session
+
+function openAdminModal(){
+  if(adminUnlocked){
+    if(confirm('Lock admin mode?')){adminUnlocked=false;lockForms();$('admin-btn').textContent='🔐 Admin';toast('Admin locked.')}
+    return;
+  }
+  $('admin-modal').classList.add('open');
+  $('admin-password').value='';
+  $('admin-error').textContent='';
+  setTimeout(()=>$('admin-password').focus(),100);
+}
+
+function checkPassword(){
+  const val=$('admin-password').value;
+  if(simpleHash(val)===CORRECT){
+    adminUnlocked=true;
+    $('admin-modal').classList.remove('open');
+    unlockForms();
+    $('admin-btn').textContent='🔓 Admin On';
+    toast('Welcome, Mark! Admin mode on.');
+  } else {
+    $('admin-error').textContent='Incorrect password. Try again.';
+    $('admin-password').value='';
+  }
+}
+
+$('admin-modal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')});
+
+// ── CART ─────────────────────────────────────────────────
+const PAYPAL_EMAIL = 'Markformohammed@gmail.com';
+let cart = JSON.parse(localStorage.getItem('tsymtw_cart') || '[]');
+let paypalRendered = false;
+
+function openCart(){
+  $('cart-drawer').classList.add('open');
+  $('cart-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderCart();
+}
+function closeCart(){
+  $('cart-drawer').classList.remove('open');
+  $('cart-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function addToCart(productId){
+  const product = products.find(p => p.id === productId);
+  if(!product) return;
+  const existing = cart.find(c => c.id === productId);
+  if(existing){
+    existing.qty += 1;
+  } else {
+    cart.push({ id: product.id, title: product.title, price: parseFloat(product.price)||0, type: product.type, qty: 1 });
+  }
+  localStorage.setItem('tsymtw_cart', JSON.stringify(cart));
+  updateCartBadge();
+  renderCart();
+  openCart();
+  toast('Added to cart ✓');
+}
+
+function removeFromCart(id){
+  cart = cart.filter(c => c.id !== id);
+  localStorage.setItem('tsymtw_cart', JSON.stringify(cart));
+  updateCartBadge();
+  renderCart();
+}
+
+function changeQty(id, delta){
+  const item = cart.find(c => c.id === id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0){ removeFromCart(id); return; }
+  localStorage.setItem('tsymtw_cart', JSON.stringify(cart));
+  updateCartBadge();
+  renderCart();
+}
+
+function cartTotal(){
+  return cart.reduce((sum, c) => sum + (c.price * c.qty), 0);
+}
+
+function updateCartBadge(){
+  const total = cart.reduce((sum, c) => sum + c.qty, 0);
+  const badge = $('cart-badge');
+  badge.textContent = total;
+  if(total > 0) badge.classList.add('visible');
+  else badge.classList.remove('visible');
+}
+
+function renderCart(){
+  const itemsEl = $('cart-items');
+  const footerEl = $('cart-footer');
+  if(!cart.length){
+    itemsEl.innerHTML = '<div class="cart-empty">Your cart is empty.<br>Add something from the shop.</div>';
+    footerEl.style.display = 'none';
+    return;
+  }
+  itemsEl.innerHTML = cart.map(item => `
+    <div class="cart-item" id="ci-${item.id}">
+      <div class="cart-item-icon">${item.type ? item.type.split(' ')[0] : '🛍️'}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-type">${item.type ? item.type.split(' ').slice(1).join(' ') : 'Product'}</div>
+        <div class="cart-item-title">${item.title}</div>
+        <div class="cart-item-controls">
+          <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+          <span class="qty-display">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+          <button class="cart-remove" onclick="removeFromCart('${item.id}')">Remove</button>
+        </div>
+      </div>
+      <span class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</span>
+    </div>
+  `).join('');
+  const total = cartTotal();
+  $('cart-total').textContent = '$' + total.toFixed(2);
+  footerEl.style.display = 'block';
+  renderPayPalButton();
+}
+
+function renderPayPalButton(){
+  const container = $('paypal-button-container');
+  container.innerHTML = '';
+  paypalRendered = false;
+  if(typeof paypal === 'undefined') return;
+  paypal.Buttons({
+    style: {
+      layout: 'vertical',
+      color:  'black',
+      shape:  'rect',
+      label:  'pay',
+      height: 44
+    },
+    createOrder: function(data, actions){
+      const total = cartTotal();
+      const items = cart.map(c => ({
+        name: c.title.slice(0, 127),
+        quantity: String(c.qty),
+        unit_amount: { currency_code: 'USD', value: c.price.toFixed(2) },
+        category: 'DIGITAL_GOODS'
+      }));
+      return actions.order.create({
+        purchase_units: [{
+          payee: { email_address: PAYPAL_EMAIL },
+          description: 'The Sex Your Marriage Truly Wants — Digital Products',
+          amount: {
+            currency_code: 'USD',
+            value: total.toFixed(2),
+            breakdown: {
+              item_total: { currency_code: 'USD', value: total.toFixed(2) }
+            }
+          },
+          items: items
+        }]
+      });
+    },
+    onApprove: function(data, actions){
+      return actions.order.capture().then(function(details){
+        const name = details.payer.name.given_name;
+        cart = [];
+        localStorage.setItem('tsymtw_cart', JSON.stringify(cart));
+        updateCartBadge();
+        closeCart();
+        $('cart-items').innerHTML = '<div class="cart-empty">Your cart is empty.<br>Add something from the shop.</div>';
+        $('cart-footer').style.display = 'none';
+        toast('Thank you, ' + name + '! Your order is complete. 💌');
+      });
+    },
+    onError: function(err){
+      toast('Payment error — please try again or contact us.');
+      console.error('PayPal error:', err);
+    },
+    onCancel: function(){
+      toast('Payment cancelled — your cart is still saved.');
+    }
+  }).render('#paypal-button-container');
+}
+
+// ── STUDIO PANEL ─────────────────────────────────────────
+let studioCurrentTab = 'photos';
+
+function openStudio(){
+  if(!adminUnlocked){ toast('Please unlock Admin first — click 🔐 Admin'); return; }
+  $('studio-panel').classList.add('open');
+  $('studio-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderStudioGallery();
+  renderStudioArticles();
+}
+function closeStudio(){
+  $('studio-panel').classList.remove('open');
+  $('studio-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function switchStudioTab(tab, btn){
+  studioCurrentTab = tab;
+  document.querySelectorAll('.studio-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.studio-pane').forEach(p => p.classList.remove('active'));
+  $('studio-pane-' + tab).classList.add('active');
+  // footers
+  ['photos','articles','manage'].forEach(t => {
+    const f = $('studio-footer-' + t);
+    if(f) f.style.display = t === tab ? 'flex' : 'none';
+  });
+  if(tab === 'manage'){ renderStudioManage(); }
+}
+
+function renderStudioGallery(){
+  const grid = $('studio-gallery-grid');
+  const label = $('studio-media-label');
+  const count = $('studio-media-count');
+  if(count) count.textContent = media.length;
+  if(label) label.textContent = media.length + ' item' + (media.length !== 1 ? 's' : '') + ' in gallery';
+  if(!media.length){ grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;opacity:.3;font-style:italic;font-size:.82rem;padding:1.5rem 0">No uploads yet.</p>'; return; }
+  grid.innerHTML = media.slice(0, 9).map(item => {
+    const thumb = item.type === 'video' ? item.src : item.src.replace('/upload/', '/upload/w_200,h_200,c_fill,q_auto,f_auto/');
+    return `<div class="studio-thumb">
+      ${item.type === 'video' ? `<video src="${item.src}" muted></video>` : `<img src="${thumb}" loading="lazy">`}
+      <button class="s-del" onclick="studioDelMedia('${item.id}',event)">✕</button>
+    </div>`;
+  }).join('') + (media.length > 9 ? `<div style="grid-column:1/-1;text-align:center;font-size:.75rem;color:rgba(250,246,240,.3);padding:.5rem">+${media.length-9} more in gallery</div>` : '');
+}
+
+function studioDelMedia(id, e){
+  e.stopPropagation();
+  if(!confirm('Remove this from gallery?')) return;
+  media = media.filter(m => String(m.id) !== String(id));
+  localStorage.setItem('tsymtw_cloudinary_media', JSON.stringify(media));
+  renderMedia();
+  renderStudioGallery();
+  toast('Removed.');
+}
+
+function renderStudioArticles(){
+  const list = $('studio-articles-list');
+  if(!articles.length){ list.innerHTML = '<p style="opacity:.25;font-style:italic;font-size:.82rem">No articles yet.</p>'; return; }
+  list.innerHTML = articles.map(a => `<div class="studio-art-item" onclick="studioEditArticle('${a.id}')">
+    <h5>${a.title}</h5>
+    <p>${a.cat} · ${a.date}</p>
+  </div>`).join('');
+}
+
+function renderStudioManage(){
+  renderStudioArticles();
+  const mini = $('studio-mini-grid');
+  const count = $('studio-media-count');
+  if(count) count.textContent = media.length;
+  if(!media.length){ mini.innerHTML = '<p style="grid-column:1/-1;opacity:.25;font-style:italic;font-size:.82rem">No uploads yet.</p>'; return; }
+  mini.innerHTML = media.slice(0,6).map(item => {
+    const thumb = item.type === 'video' ? item.src : item.src.replace('/upload/', '/upload/w_200,h_200,c_fill,q_auto,f_auto/');
+    return `<div class="studio-thumb">
+      ${item.type === 'video' ? `<video src="${item.src}" muted></video>` : `<img src="${thumb}" loading="lazy">`}
+      <button class="s-del" onclick="studioDelMedia('${item.id}',event)">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function studioSaveArticle(){
+  const title = $('s-art-title').value.trim();
+  const body = $('s-art-body').value.trim();
+  const cat = $('s-art-cat').value;
+  const author = $('s-art-author').value.trim();
+  const editId = $('s-art-edit-id').textContent;
+  if(!title || !body){ toast('Please add a title and content.'); return; }
+  if(editId){
+    const i = articles.findIndex(a => a.id === editId);
+    if(i > -1) articles[i] = {...articles[i], title, body, cat, author};
+  } else {
+    articles.unshift({ id: Date.now().toString(), title, body, cat, author, date: new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}) });
+  }
+  localStorage.setItem('tsymtw_articles', JSON.stringify(articles));
+  studioClearArticle();
+  renderArticles();
+  toast(editId ? 'Article updated.' : 'Article published ✓');
+}
+
+function studioClearArticle(){
+  $('s-art-title').value = '';
+  $('s-art-body').value = '';
+  $('s-art-author').value = 'Mark Picasso, MPA';
+  $('s-art-cat').value = 'Intimacy';
+  $('s-art-edit-id').textContent = '';
+}
+
+function studioEditArticle(id){
+  const a = articles.find(x => x.id === id);
+  if(!a) return;
+  switchStudioTab('articles', document.querySelectorAll('.studio-tab')[1]);
+  $('s-art-title').value = a.title;
+  $('s-art-body').value = a.body;
+  $('s-art-author').value = a.author || 'Mark Picasso, MPA';
+  $('s-art-cat').value = a.cat;
+  $('s-art-edit-id').textContent = a.id;
+  toast('Article loaded — edit and save.');
+}
+
+// Show Studio FAB only when admin is unlocked
+function unlockForms(){
+  document.querySelectorAll('.admin-forms').forEach(el => el.classList.add('unlocked'));
+  $('studio-fab').style.display = 'block';
+}
+function lockForms(){
+  document.querySelectorAll('.admin-forms').forEach(el => el.classList.remove('unlocked'));
+  $('studio-fab').style.display = 'none';
+  closeStudio();
+}
+
+// ── INIT ─────────────────────────────────────────────────
+renderMedia();renderArticles();renderProducts();updateCartBadge();
+</script>
+</body>
+</html>
